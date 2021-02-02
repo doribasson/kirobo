@@ -1,6 +1,6 @@
 import React from "react";
 import "./form.css";
-import Input from "../Input/Input";
+import Input from "../input/Input";
 
 const Form = ({
   onSubmit,
