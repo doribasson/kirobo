@@ -1,0 +1,19 @@
+.card1 {
+  /* background-color: aliceblue; */
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 400px;
+  box-shadow: 0 10px 20px black;
+  background-size: cover;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  font-family: "Abel", sans-serif;
+  margin: 1rem;
+}
+
+.card1 p {
+  font-size: 1.2rem;
+  color: white;
+}

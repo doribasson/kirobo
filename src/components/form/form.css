@@ -1,0 +1,7 @@
+.login-form {
+  width: 70%;
+  padding: 2rem;
+  background: #0e1629;
+  border-radius: calc(var(--border-radius) * 2);
+  margin: auto;
+}
