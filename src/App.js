@@ -7,13 +7,11 @@ function App() {
   const [myDevice, setDevice] = useState({});
   const [str, setStr] = useState("");
   const [path, setPath] = useState("");
+  const [resValue, setResValue] = useState("");
 
   useEffect(() => {
     const myDevice = e => devicefun(path, str);
     setDevice(myDevice);
-    // console.log(myDevice);
-    // console.log(navigator.userAgent);
-    // const { hostType, deviceType, deviceName } = myDevice;
   }, [path, str]);
 
   return (
@@ -22,7 +20,8 @@ function App() {
       <Form
         onChangeStr={e => setStr(e.target.value)}
         onChangePath={e => setPath(e.target.value)}
-        onSubmit={e => onSubmit(e, str, path)}
+        onSubmit={e => onSubmit(e, str, path, { setResValue, resValue })}
+        resValue={resValue}
         valueStr={str}
         valuePath={path}
       />

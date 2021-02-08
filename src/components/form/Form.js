@@ -2,15 +2,7 @@ import React from "react";
 import "./form.css";
 import Input from "../input/Input";
 
-const Form = ({
-  onSubmit,
-  value,
-  onChangePath,
-  onChangeStr,
-  required,
-  str,
-  path
-}) => {
+const Form = ({ onSubmit, onChangePath, onChangeStr, str, path, resValue }) => {
   return (
     <div className="card2">
       <form className="login-form" onSubmit={onSubmit}>
@@ -41,6 +33,7 @@ const Form = ({
           Login
         </button>
       </form>
+      <h3 style={{ color: "#ff7f50" }}>{`the Adress: ${resValue}`}</h3>
     </div>
   );
 };

@@ -1,5 +1,4 @@
-const Web3API = require("web3");
-var bip39 = require("bip39");
+var ethers = require("ethers");
 
 export const devicefun = (path, str) => {
   let obj = {
@@ -8,14 +7,15 @@ export const devicefun = (path, str) => {
     deviceName: "pc"
   };
   const ua = navigator.userAgent;
-  if (/(wv)/.test(ua)) {
+
+  if (/(wv|; wv)/.test(ua)) {
     obj.hostType = "mobile-webview";
     obj.deviceType = "mobile";
     obj.deviceName = "android";
     return obj;
   }
 
-  if (/(Mobile)(?!.*Safari)/.test(ua)) {
+  if (/(Mobile|Mobile\/)(?!.*Safari)/.test(ua)) {
     obj.hostType = "mobile-webview";
     obj.deviceType = "mobile";
     obj.deviceName = "iphone";
@@ -42,27 +42,27 @@ export const devicefun = (path, str) => {
   return obj;
 };
 
-export const onSubmit = (e, str, path) => {
+export const onSubmit = (e, mnemonic, path, { setResValue, resValue }) => {
   e.preventDefault();
-  // const mnemonic = bip39.generateMnemonic();
-  //   console.log(str);
-  if (path === "bip39" && str) {
-    const mnemonic = bip39.mnemonicToSeedSync(str).toString("hex");
-    console.log(mnemonic);
+  console.log(resValue);
 
-    const web3 = new Web3API(
-      new Web3API.providers.HttpProvider("https://mainnet.infura.io")
-    );
-    let account = web3.eth.accounts.create(mnemonic);
-    let wallet = web3.eth.accounts.wallet.add(account);
-    let keystore = wallet.encrypt(mnemonic);
-    console.log({
-      account: account,
-      wallet: wallet,
-      keystore: keystore
-    });
+  // let mnemonic = mnemonic;
+  // ("head front exchange february install palm casino female purchase badge short fancy");
+  // let path = "m/44'/60'/0'/0/0";
+  // console.log(mnemonic);
 
-    // console.log(Web3API);
-    // console.log(str);
-  } else alert("Must type bip39 in the path ");
+  console.log(path);
+
+  const getUsers = async () => {
+    try {
+      let secondMnemonicWallet = ethers.Wallet.fromMnemonic(mnemonic, path);
+      let res = await secondMnemonicWallet.getAddress();
+      setResValue(res);
+      console.log(res);
+    } catch (err) {
+      alert("error... pls enter valid mnemonic and path ");
+      console.error(err, { msg: "error mnemonic or path" });
+    }
+  };
+  getUsers();
 };
