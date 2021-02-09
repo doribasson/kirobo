@@ -33,7 +33,7 @@ const Form = ({ onSubmit, onChangePath, onChangeStr, str, path, resValue }) => {
           Login
         </button>
       </form>
-      <h3 style={{ color: "#ff7f50" }}>{`the Adress: ${resValue}`}</h3>
+      <h3>{`the address: ${resValue}`}</h3>
     </div>
   );
 };

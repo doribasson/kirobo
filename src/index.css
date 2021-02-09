@@ -30,6 +30,7 @@ code {
   padding: 0;
   position: relative;
   top: 2rem;
+  overflow: hidden;
 }
 
 .card2 {
@@ -48,12 +49,20 @@ code {
   margin: 5rem;
 }
 
+.card2 h3 {
+  color: #ff7f50;
+}
+
 @media (max-width: 560px) {
   .card1 {
     width: 100%;
   }
   .card2 {
     width: 90%;
+    color: #ff7f50;
+  }
+  .card2 h3 {
+    word-wrap: break-word;
   }
 }
 
